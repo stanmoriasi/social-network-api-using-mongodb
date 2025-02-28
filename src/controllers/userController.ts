@@ -34,3 +34,41 @@ import { Request, Response } from 'express';
       res.status(500).json(err);
     }
   }
+
+  export const updateUser = async(req: Request, res: Response) => {
+    try {
+      console.log("🚀 ~ updateUser ~ req.body:", req.body)
+      console.log("🚀 ~ updateUser ~ req.params.userId:", req.params.userId)
+      const dbUserData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { 
+          $set: req.body 
+        },
+        { new: true, runValidators: true }
+      );
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user with this ID!' });
+        return;
+      } else {
+        res.json(dbUserData);
+      } 
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  // delete a user
+  // BONUS: remove a user's associated thoughts when deleted
+  export const deleteUser = async(req: Request, res: Response) => {
+    try {
+      const dbUserData = await User.findOneAndDelete({ _id: req.params.userId });
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user with this id!' });
+        return;
+      } else {
+        res.json({ message: 'User deleted!' });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
