@@ -1,7 +1,6 @@
 import connection from '../config/connection.js';
 import { User } from '../models/index.js';
-console.log("🚀 ~ User:", User)
-//import { userData } from './data.js';
+import { userData } from './data.js';
 
 connection.on('error', (err) => err);
 
@@ -16,6 +15,12 @@ connection.once('open', async () => {
   }
 
   //await User.insertMany(userData);
+  await User.create({
+    userData
+  });
+    console.log("🚀 ~ connection.once ~ userData:", userData)
+
+  await User.create(userData);
   console.info('Seeding complete! 🌱');
   process.exit(0);
 });
