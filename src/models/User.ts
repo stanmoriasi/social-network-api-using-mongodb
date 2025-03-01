@@ -4,6 +4,7 @@ interface IUser extends Document {
   username: string;
   email: string;
   thought: string[];
+  friends: string[];
  }
 
 // Schema to create User model
@@ -11,7 +12,8 @@ const userSchema = new Schema<IUser>(
   {
     username: String,
     email: String,
-    thought: [String]
+    thought: [{type: Schema.Types.ObjectId, ref: 'Thought'}], // Array of _id values referencing the Thought model
+    friends: [{type: Schema.Types.ObjectId, ref: 'User'}], // Array of _id values referencing the User model
   },
   {
     // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
@@ -23,8 +25,10 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-// Create a virtual property `fullName` that gets and sets the user's full name
-
+// Create a virtual property `friendCount` that gets and sets the user's full name
+userSchema.virtual('friendCount').get(function (this: IUser) {
+  return this.friends.length;
+});
 
 
 // Initialize our User model
