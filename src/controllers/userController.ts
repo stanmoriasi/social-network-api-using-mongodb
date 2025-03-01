@@ -44,7 +44,7 @@ import { Request, Response } from 'express';
         { 
           $set: req.body 
         },
-        { new: true, runValidators: true }
+        { new: true, runValidators: false }
       );
       if (!dbUserData) {
         res.status(404).json({ message: 'No user with this ID!' });
