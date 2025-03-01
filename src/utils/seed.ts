@@ -1,6 +1,6 @@
 import connection from '../config/connection.js';
-import { User } from '../models/index.js';
-import { userData } from './data.js';
+import { User, Thought } from '../models/index.js';
+import { userData, thoughtData } from './data.js';
 
 connection.on('error', (err) => err);
 
@@ -21,6 +21,25 @@ connection.once('open', async () => {
     console.log("🚀 ~ connection.once ~ userData:", userData)
 
   await User.create(userData);
+
+  let thoughtCheck = await connection.db?.listCollections({ name: 'thoughts' }).toArray();
+  if (thoughtCheck?.length) {
+    await connection.dropCollection('thoughts');
+  }
+  
+  //await User.insertMany(userData);
+  await Thought.create({
+    thoughtData
+  });
+    console.log("🚀 ~ connection.once ~ thought:", userData)
+  
+  await Thought.create(thoughtData);
   console.info('Seeding complete! 🌱');
   process.exit(0);
+
 });
+
+
+
+
+
