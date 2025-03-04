@@ -27,24 +27,49 @@ export const thoughtData = [{
     thoughtText: 'lorem ipsum dolor sit amet',
     createdAt: new Date(),
     username: 'lorem',
-    reactions: []
+    reactions: [
+        {
+            reactionBody: 'What a nice thought!',
+        },
+        {
+            reactionBody: 'Fantastic!',
+        }
+    ]
 },
 {
     thoughtText: 'lorem ipsum dolor sit amet',
     createdAt: new Date(),
     username: 'lorem2',
-    reactions: []
+    reactions: [{
+        reactionBody: 'Amazing!',
+    },
+    {
+        reactionBody: 'Outstanding!',
+    }
+]
 },
 {
     thoughtText: 'lorem ipsum dolor sit amet',
     createdAt: new Date(),
     username: 'lorem3',
-    reactions: []
+    reactions: [
+        {
+            reactionBody: 'OMG!!!',
+        },
+        {
+            reactionBody: 'Just wow!!',
+        }
+    ]
 },
 {
     thoughtText: 'lorem ipsum dolor sit amet',
     createdAt: new Date(),
     username: 'lorem4',
-    reactions: []
+    reactions: [{
+        reactionBody: 'lorem ipsum dolor sit amet',
+    },
+    {
+        reactionBody: 'lorem ipsum dolor sit amet',
+    }]
 },
 ]   
