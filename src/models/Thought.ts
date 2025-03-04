@@ -23,7 +23,14 @@ type: String,
 required: false,
 trim: true,
 },
-reactions: []
+reactions: [
+    {
+        reactionBody: String,
+        reactionId: {
+            type: Schema.Types.ObjectId
+          },
+    }
+]
 },
 
 );
