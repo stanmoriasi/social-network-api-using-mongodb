@@ -35,7 +35,10 @@ reactions: [
 
 );
 
-thoughtSchema.virtual('reactionCount').get(function (this: IThought) {
+thoughtSchema.
+virtual('reactionCount')
+.get(function (this: IThought)
+{
 return this.reactions.length;
 });
 // Initialize our Thought model
