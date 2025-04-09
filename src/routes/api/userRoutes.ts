@@ -6,6 +6,6 @@ import { getUsers, getSingleUser, createUser, updateUser, deleteUser } from '../
 router.route('/').get(getUsers).post(createUser);
 
 // /api/users/:userId
-router.route('/:userId').get(getSingleUser).patch(updateUser).delete(deleteUser);
+router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
 export default router;
