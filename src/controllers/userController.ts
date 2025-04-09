@@ -72,3 +72,41 @@ import { Request, Response } from 'express';
       res.status(500).json(err);
     }
   }
+
+  // add an friend to a user
+  export const addFriend = async(req: Request, res: Response) => {
+    try {
+      const dbUserData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user with this id!' });
+        return;
+      } else {
+        res.json(dbUserData);
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  // remove friend from a user
+  export const removeFriend = async(req: Request, res: Response) => {
+    try {
+      const dbUserData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+      );
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user with this id!' });
+        return;
+      } else {
+        res.json(dbUserData);
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
