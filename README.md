@@ -5,7 +5,7 @@
   Licence URL: [License](https://opensource.org/licenses/AGPL)
 
   ## Video demo
-  https://app.screencastify.com/v3/watch/7Q2lGdsdaPR9qepoqTWF
+  https://app.screencastify.com/v3/watch/V7QcbnQWl11j16vZ0Nye
 
   ## Description
   This project showcases my different skills working with different frontend and backend techologies together with a github URL to each project source code
