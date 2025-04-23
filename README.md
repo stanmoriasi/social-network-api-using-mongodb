@@ -1,7 +1,5 @@
 # 17 NoSQL: Social Network API
 
-# book-search-engine
-
   ![GitHub license](https://img.shields.io/badge/License-AGPL-blue.svg)
 
   Licence URL: [License](https://opensource.org/licenses/AGPL)
